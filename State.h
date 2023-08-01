@@ -1,6 +1,8 @@
 #ifndef UNO_STATE_H_
 #define UNO_STATE_H_
 
+#include "utility.h"
+
 namespace uno {
 
 struct Idle {};
@@ -29,7 +31,13 @@ public:
     return *this;
   }
 
-  // no destructor needed since states are trivially destructible
+  ~State() noexcept {
+    if (tag_ == Tag::kIdle) {
+      idle_.~Idle();
+    } else {
+      blinking_.~Blinking();
+    }
+  }
 
   constexpr const Idle* get_if_idle() const noexcept {
     return tag_ == Tag::kIdle ? &idle_
@@ -51,12 +59,12 @@ private:
 };
 
 template <class F>
-auto visit(F&& f, const State& state) -> decltype(f(Idle{})) {
+auto visit(F&& f, const State& state) -> decltype(forward<F>(f)(Idle{})) {
   if (const auto* const idle = state.get_if_idle()) {
-    return f(*idle);
+    return forward<F>(f)(*idle);
   } else if (const auto* const blinking =
                  state.get_if_blinking()) {
-    return f(*blinking);
+    return forward<F>(f)(*blinking);
   }
 }
 
