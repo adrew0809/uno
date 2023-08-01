@@ -1,12 +1,12 @@
 #include "Writer.h"
 
-#include "Led.h"
+#include "DigitalOutput.h"
 #include "State.h"
 
 namespace uno {
 
-Writer::Writer(const Led& ready,
-               const array<Led, 2>& blinkers) noexcept :
+Writer::Writer(const DigitalOutput& ready,
+               const array<DigitalOutput, 2>& blinkers) noexcept :
     ready_(&ready), blinkers_(&blinkers) {}
 
 void Writer::operator()(const Idle&) const noexcept {

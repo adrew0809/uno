@@ -1,5 +1,5 @@
-#ifndef UNO_WRITE_H_
-#define UNO_WRITE_H_
+#ifndef UNO_WRITER_H_
+#define UNO_WRITER_H_
 
 #include <stddef.h>
 
@@ -8,23 +8,23 @@
 namespace uno {
 
 class Blinking;
+class DigitalOutput;
 class Idle;
-class Led;
 
 class Writer {
 public:
-  Writer(const Led& ready, const array<Led, 2>& blinkers) noexcept;
+  Writer(const DigitalOutput& ready,
+         const array<DigitalOutput, 2>& blinkers) noexcept;
 
   void operator()(const Idle& idle) const noexcept;
 
   void operator()(const Blinking& blinking) const noexcept;
 
 private:
-  const Led* ready_;
-  const array<Led, 2>* blinkers_;
+  const DigitalOutput* ready_;
+  const array<DigitalOutput, 2>* blinkers_;
 };
 
 }  // namespace uno
 
-#endif  // UNO_WRITE_H_
-
+#endif  // UNO_WRITER_H_
