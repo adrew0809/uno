@@ -13,23 +13,13 @@ struct Blinking {
 
 class State {
 public:
+  constexpr State() noexcept : idle_(), tag_(Tag::kIdle) {}
+
   constexpr State(const Idle& idle) noexcept :
       idle_(idle), tag_(Tag::kIdle) {}
 
   constexpr State(const Blinking& blinking) noexcept :
       blinking_(blinking), tag_(Tag::kBlinking) {}
-
-  State& operator=(const Idle& idle) noexcept {
-    idle_ = idle;
-    tag_ = Tag::kIdle;
-    return *this;
-  }
-
-  State& operator=(const Blinking& blinking) noexcept {
-    blinking_ = blinking;
-    tag_ = Tag::kBlinking;
-    return *this;
-  }
 
   ~State() noexcept {
     if (tag_ == Tag::kIdle) {
