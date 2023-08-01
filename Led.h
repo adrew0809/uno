@@ -8,8 +8,8 @@ namespace uno {
 class Led {
 public:
   explicit Led(uint8_t pin) noexcept;
-  void on() noexcept;
-  void off() noexcept;
+  void on() const noexcept;
+  void off() const noexcept;
 private:
   uint8_t pin_;
 };

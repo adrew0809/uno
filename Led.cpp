@@ -9,11 +9,11 @@ Led::Led(const uint8_t pin) noexcept : pin_(pin) {
   digitalWrite(pin_, LOW);
 }
 
-void Led::on() noexcept {
+void Led::on() const noexcept {
   digitalWrite(pin_, HIGH);
 }
 
-void Led::off() noexcept {
+void Led::off() const noexcept {
   digitalWrite(pin_, LOW);
 }
 

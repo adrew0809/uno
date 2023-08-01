@@ -5,7 +5,7 @@ namespace uno {
 
 struct Idle {};
 struct Blinking {
-  bool on;
+  bool first_led_on;
   unsigned long ticks;
 };
 
@@ -13,6 +13,7 @@ class State {
 public:
   constexpr State(const Idle& idle) noexcept :
       idle_(idle), tag_(Tag::kIdle) {}
+
   constexpr State(const Blinking& blinking) noexcept :
       blinking_(blinking), tag_(Tag::kBlinking) {}
 
@@ -21,11 +22,14 @@ public:
     tag_ = Tag::kIdle;
     return *this;
   }
+
   State& operator=(const Blinking& blinking) noexcept {
     blinking_ = blinking;
     tag_ = Tag::kBlinking;
     return *this;
   }
+
+  // no destructor needed since states are trivially destructible
 
   constexpr const Idle* get_if_idle() const noexcept {
     return tag_ == Tag::kIdle ? &idle_

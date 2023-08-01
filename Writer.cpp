@@ -5,8 +5,9 @@
 
 namespace uno {
 
-Writer::Writer(Led& ready, array<Led, 2>& blinkers) noexcept :
-		ready_(&ready), blinkers_(&blinkers) {}
+Writer::Writer(const Led& ready,
+               const array<Led, 2>& blinkers) noexcept :
+    ready_(&ready), blinkers_(&blinkers) {}
 
 void Writer::operator()(const Idle&) const noexcept {
 	ready_->on();
@@ -15,7 +16,7 @@ void Writer::operator()(const Idle&) const noexcept {
 
 void Writer::operator()(const Blinking& blinking) const noexcept {
 	ready_->off();
-	if (blinking.on) {
+	if (blinking.first_led_on) {
 		(*blinkers_)[0].on();
 		(*blinkers_)[1].off();
 	} else {

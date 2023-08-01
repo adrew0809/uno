@@ -13,15 +13,15 @@ class Led;
 
 class Writer {
 public:
-  Writer(Led& ready, array<Led, 2>& blinkers) noexcept;
+  Writer(const Led& ready, const array<Led, 2>& blinkers) noexcept;
 
-  void operator()(const Idle&) const noexcept;
+  void operator()(const Idle& idle) const noexcept;
 
   void operator()(const Blinking& blinking) const noexcept;
 
 private:
-  Led* ready_;
-  array<Led, 2>* blinkers_;
+  const Led* ready_;
+  const array<Led, 2>* blinkers_;
 };
 
 }  // namespace uno

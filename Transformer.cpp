@@ -19,7 +19,7 @@ State Transformer::operator()(
     return Idle{};
   }
   if (ticks_ != blinking.ticks) {
-    return Blinking{!blinking.on, ticks_};
+    return Blinking{!blinking.first_led_on, ticks_};
   }
   return blinking;
 }

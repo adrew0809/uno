@@ -5,14 +5,16 @@ namespace uno {
 
 class Clock {
 public:
-  explicit Clock(const unsigned long factor) : factor_(factor) {}
+  explicit Clock(const unsigned long cycles_per_tick) :
+      cycles_per_tick_(cycles_per_tick) {}
+
   unsigned long tick() noexcept {
-    return ticks_++ / factor_;
+    return cycles_++ / cycles_per_tick_;
   }
 
 private:
-  unsigned long ticks_{0};
-  unsigned long factor_;
+  unsigned long cycles_{0};
+  unsigned long cycles_per_tick_;
 };
 
 }  // namespace uno
