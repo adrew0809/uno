@@ -50,12 +50,11 @@ private:
 
 template <class F>
 auto visit(F&& f, const State& state) -> decltype(forward<F>(f)(Idle{})) {
-  if (const auto* const idle = state.get_if_idle()) {
-    return forward<F>(f)(*idle);
-  } else if (const auto* const blinking =
+  if (const auto* const blinking =
                  state.get_if_blinking()) {
     return forward<F>(f)(*blinking);
   }
+  return forward<F>(f)(*state.get_if_idle());
 }
 
 }  // namespace uno

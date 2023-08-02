@@ -15,4 +15,4 @@ Compiled for Arduino uno.
                   | program size (bytes) | dynamic memory (bytes)
                   +----------------------+-----------------------
     book solution | 1160                 | 9
-    this solution | 1168                 | 9
+    this solution | 1166                 | 9
