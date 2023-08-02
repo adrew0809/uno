@@ -9,9 +9,9 @@ class Transformer {
 public:
   Transformer(bool is_pressed, unsigned long ticks) noexcept;
 
-  State operator()(const Idle& idle) const noexcept;
+  State operator()(const Idle& state) const noexcept;
 
-  State operator()(const Blinking& blinking) const noexcept;
+  State operator()(const Blinking& state) const noexcept;
 
 private:
   bool is_pressed_;
