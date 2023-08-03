@@ -19,6 +19,10 @@ struct array {
 
   T elems_[N];
 
+  constexpr size_type size() const noexcept {
+    return N;
+  }
+
 	constexpr reference operator[](size_type pos) {
     return elems_[pos];
   }
