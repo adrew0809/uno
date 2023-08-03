@@ -48,4 +48,5 @@ int main() {
   uno::test_blinking_changes_to_idle_if_no_press();
   uno::test_blinking_remains_blinking_if_press();
   uno::test_blinking_blinks_on_tick();
+  return 0;
 }
