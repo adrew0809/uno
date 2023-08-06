@@ -14,3 +14,7 @@ add_test(NAME TestArray COMMAND test_array)
 add_executable(test_type_traits test/test_type_traits.cpp)
 target_link_libraries(test_type_traits PRIVATE uno)
 add_test(NAME TestTypeTraits COMMAND test_type_traits)
+
+add_executable(test_Clock test/test_Clock.cpp)
+target_link_libraries(test_Clock PRIVATE uno)
+add_test(NAME TestClock COMMAND test_Clock)

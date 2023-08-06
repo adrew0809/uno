@@ -9,7 +9,7 @@ public:
       cycles_per_tick_(cycles_per_tick) {}
 
   unsigned long tick() noexcept {
-    return cycles_++ / cycles_per_tick_;
+    return ++cycles_ / cycles_per_tick_;
   }
 
 private:
