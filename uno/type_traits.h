@@ -36,31 +36,6 @@ template<class T> struct remove_reference<T&&> { using type = T; };
 template<class T>
 using remove_reference_t = typename remove_reference<T>::type;
 
-namespace detail {
-
-template<class T>
-struct type_identity { using type = T; };
- 
-template<class T>
-auto try_add_pointer(int) ->
-    type_identity<typename remove_reference<T>::type*>;
-template<class T>
-auto try_add_pointer(...) -> type_identity<T>;
-
-} // namespace detail
- 
-template<class T>
-struct add_pointer : decltype(detail::try_add_pointer<T>(0)) {};
-template<class T>
-using add_pointer_t = typename add_pointer<T>::type;
-
-template<class T, class V>
-struct is_same : false_type {};
-template<class T>
-struct is_same<T, T> : true_type {};
-template<class T, class U>
-inline constexpr bool is_same_v = is_same<T, U>::value;
-
 }  // namespace uno
 
 #endif  // UNO_TYPE_TRAITS_H_

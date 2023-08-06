@@ -1,12 +1,34 @@
 
-#include <cassert>
+#include <type_traits>
 
 #include "utility.h"
 
-int main() {
-  uno::integer_sequence<int, 0, 1, 2, 3> seq;
-  assert(seq.size() == 4);
+namespace {
 
-  const auto idxs = uno::index_sequence_for<int, double, char>();
-  assert(idxs.size() == 3);
+template<class T>
+void lvalue_checker(T&& t) {
+  static_assert(
+      std::is_same_v<decltype(uno::forward<T>(t)),
+                     T&>);
+}
+
+template<class T>
+void rvalue_checker(T&& t) {
+  static_assert(
+      std::is_same_v<decltype(uno::forward<T>(t)),
+                     T&&>);
+}
+
+void test_forward() {
+  int x = 10;
+  lvalue_checker(x);
+  int& y = x;
+  lvalue_checker(y);
+  rvalue_checker(int(11));
+}
+
+}  // namespace
+
+int main() {
+  void test_forward();
 }
