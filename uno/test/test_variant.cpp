@@ -106,5 +106,4 @@ int main() {
     assert(uno::get_if<1>(&u) != nullptr);
     assert(*uno::get_if<1>(&u) == 100);
   }
-  
 }

@@ -6,6 +6,25 @@
 #include "type_traits.h"
 
 namespace uno {
+namespace detail {
+
+template<class T, class... Ts>
+constexpr size_t find_uniq_type_in_pack() noexcept {
+  constexpr size_t N = sizeof...(Ts);
+  constexpr bool found[N] = { is_same_v<T, Ts> ... };
+  size_t n = N;
+  for (size_t i = 0; i < N; ++i) {
+    if (found[i]) {
+      if (n < N) {
+        return N;
+      }
+      n = i;
+    }
+  }
+  return n;
+}
+
+}  // namespace detail
 
 template<class T, T... Ints>
 class integer_sequence {

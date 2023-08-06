@@ -88,6 +88,8 @@ template <size_t I, class T>
 using variant_alternative_t =
     typename variant_alternative<I, T>::type;
 
+inline constexpr size_t variant_npos = -1;
+
 template <class... Ts>
 class variant {
 public:
