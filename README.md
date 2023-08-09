@@ -16,3 +16,13 @@ Compiled for Arduino uno.
                   +----------------------+-----------------------
     book solution | 1160                 | 9
     this solution | 1166                 | 9
+
+### Project 2
+
+This solution uses classes, functions, and array. Delay is built into analog read call.
+
+                  | program size (bytes) | dynamic memory (bytes)
+                  +----------------------+-----------------------
+    book solution | 4098                 | 238
+    this solution | 4024                 | 238
+
