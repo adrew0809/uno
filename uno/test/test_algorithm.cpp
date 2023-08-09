@@ -15,6 +15,7 @@ void test_transform() {
   assert(out[0] == 2);
   assert(out[1] == 4);
   assert(out[2] == 6);
+  assert(result == (out + 3));
 }
 
 int main() {

@@ -30,5 +30,5 @@ void test_forward() {
 }  // namespace
 
 int main() {
-  void test_forward();
+  test_forward();
 }
