@@ -18,7 +18,7 @@ int main() {
   const array<AnalogInput, 3> photoresisters =
       {AnalogInput(A0, 0), AnalogInput(A1, 5), AnalogInput(A2, 5)};
   const array<AnalogOutput, 3> led =
-      {AnalogOutput(9), AnalogOutput(11), AnalogOutput(12)};
+      {AnalogOutput(9), AnalogOutput(10), AnalogOutput(11)};
   const SerialPort serial_port(9600);
 
   while (true) {
