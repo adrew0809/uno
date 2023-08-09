@@ -4,11 +4,11 @@
 
 namespace uno {
 
-void write(const RGB<AnalogOutput>& led,
-           const RGB<char>& output) noexcept {
-  led.red.write(output.red); 
-  led.green.write(output.green); 
-  led.blue.write(output.blue); 
+void write(const array<AnalogOutput, 3>& led,
+           const array<char, 3>& output) noexcept {
+  for (int i = 0; i < 3; ++i) {
+		led[i].write(output[i]); 
+  }
 }
 
 }  // namespace uno

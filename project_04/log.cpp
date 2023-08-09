@@ -1,28 +1,36 @@
-#include "RGB.h"
+#include "log.h"
+
 #include "SerialPort.h"
 
 namespace uno {
+namespace {
 
-void log(const SerialPort& serial_port,
-         const RGB<float>& input) noexcept {
-  serial_port.print("Raw Sensor Values \t red: ");
-  serial_port.print(input.red);
-  serial_port.print("\t green: ");
-  serial_port.print(input.green);
-  serial_port.print("\t blue: ");
-  serial_port.print(input.blue);
+constexpr array<const char*, 3> kColors = {"\t red: ",
+                                           "\t green: ",
+                                           "\t blue: "};
+
+template<typename T>
+void print(const SerialPort& serial_port,
+           const char* const intro,
+           const array<T, 3>& arr) noexcept {
+  serial_port.print(intro);
+  for (int i = 0; i < 3; ++i) {
+    serial_port.print(kColors[i]);
+    serial_port.print(arr[i]);
+  }
   serial_port.print("\n");
 }
 
+}  // namespace
+
 void log(const SerialPort& serial_port,
-         const RGB<char>& output) noexcept {
-  serial_port.print("Mapped Sensor Values \t red: ");
-  serial_port.print(output.red);
-  serial_port.print("\t green: ");
-  serial_port.print(output.green);
-  serial_port.print("\t blue: ");
-  serial_port.print(output.blue);
-  serial_port.print("\n");
+         const array<float, 3>& input) noexcept {
+  print(serial_port, "Raw Sensor Values ", input);
+}
+
+void log(const SerialPort& serial_port,
+         const array<char, 3>& output) noexcept {
+  print(serial_port, "Mapped Sensor Values ", output);
 }
 
 }  // namespace uno

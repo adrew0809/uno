@@ -1,14 +1,14 @@
 #ifndef UNO_PROJECT04_MAP_H_
 #define UNO_PROJECT04_MAP_H_
 
-#include "RGB.h"
+#include "array.h"
 
 namespace uno {
 
-constexpr RGB<char> map(const RGB<float>& sensorValues) noexcept {
-  return {sensorValues.red/4,
-          sensorValues.green/4,
-          sensorValues.blue/4};
+constexpr array<char, 3> map(const array<float, 3>& sensorValues) noexcept {
+  return {sensorValues[0]/4,
+          sensorValues[1]/4,
+          sensorValues[2]/4};
 }
 
 }  // namespace uno

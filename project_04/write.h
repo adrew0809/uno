@@ -1,13 +1,13 @@
 #ifndef UNO_PROJECT04_WRITE_H_
 #define UNO_PROJECT04_WRITE_H_
 
-#include "RGB.h"
+#include "array.h"
 
 namespace uno {
 class AnalogOutput;
 
-void write(const RGB<AnalogOutput>& led,
-           const RGB<char>& output) noexcept;
+void write(const array<AnalogOutput, 3>& led,
+           const array<char, 3>& output) noexcept;
 
 }  // namespace uno
 

@@ -1,12 +1,12 @@
 #ifndef UNO_PROJECT04_READ_H_
 #define UNO_PROJECT04_READ_H_
 
-#include "RGB.h"
+#include "array.h"
 
 namespace uno {
 class AnalogInput;
 
-RGB<float> read(const RGB<AnalogInput>& photoresisters) noexcept;
+array<float, 3> read(const array<AnalogInput, 3>& photoresisters) noexcept;
 
 }  // namespace uno
 

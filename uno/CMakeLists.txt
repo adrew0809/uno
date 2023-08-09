@@ -18,3 +18,7 @@ add_test(NAME TestTypeTraits COMMAND test_type_traits)
 add_executable(test_Clock test/test_Clock.cpp)
 target_link_libraries(test_Clock PRIVATE uno)
 add_test(NAME TestClock COMMAND test_Clock)
+
+add_executable(test_algorithm test/test_algorithm.cpp)
+target_link_libraries(test_algorithm PRIVATE uno)
+add_test(NAME TestAlgorithm COMMAND test_algorithm)

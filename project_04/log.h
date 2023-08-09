@@ -1,18 +1,17 @@
 #ifndef UNO_PROJECT04_LOG_H_
 #define UNO_PROJECT04_LOG_H_
 
-namespace uno {
+#include "array.h"
 
-template<typename T>
-struct RGB;
+namespace uno {
 
 class SerialPort;
 
 void log(const SerialPort& serial_port,
-         const RGB<float>& input) noexcept;
+         const array<float, 3>& input) noexcept;
 
 void log(const SerialPort& serial_port,
-         const RGB<char>& output) noexcept;
+         const array<char, 3>& output) noexcept;
 
 }  // namespace uno
 
