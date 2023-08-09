@@ -5,7 +5,7 @@ namespace uno {
 
 class Clock {
 public:
-  explicit Clock(const unsigned long cycles_per_tick) :
+  constexpr explicit Clock(const unsigned long cycles_per_tick) :
       cycles_per_tick_(cycles_per_tick) {}
 
   unsigned long tick() noexcept {
