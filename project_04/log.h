@@ -11,7 +11,7 @@ void log(const SerialPort& serial_port,
          const array<float, 3>& input) noexcept;
 
 void log(const SerialPort& serial_port,
-         const array<char, 3>& output) noexcept;
+         const array<int, 3>& output) noexcept;
 
 }  // namespace uno
 

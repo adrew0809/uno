@@ -7,7 +7,7 @@ namespace uno {
 class AnalogOutput;
 
 void write(const array<AnalogOutput, 3>& led,
-           const array<char, 3>& output) noexcept;
+           const array<int, 3>& output) noexcept;
 
 }  // namespace uno
 

@@ -7,7 +7,7 @@ class AnalogOutput {
 public:
   explicit AnalogOutput(int pin) noexcept;
 
-  void write(char value) const noexcept;
+  void write(int value) const noexcept;
 
 private:
   int pin_;

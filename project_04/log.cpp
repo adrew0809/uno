@@ -29,7 +29,7 @@ void log(const SerialPort& serial_port,
 }
 
 void log(const SerialPort& serial_port,
-         const array<char, 3>& output) noexcept {
+         const array<int, 3>& output) noexcept {
   print(serial_port, "Mapped Sensor Values ", output);
 }
 

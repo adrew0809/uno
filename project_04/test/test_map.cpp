@@ -1,0 +1,23 @@
+#include <cassert>
+#include <cmath>
+
+#include "array.h"
+#include "map.h"
+
+namespace uno {
+namespace {
+
+void test_map() {
+  array<float, 3> in = { 64.0, 128.0, 512.0 };
+  const auto out = map(in);
+  assert(out[0] == 16);
+  assert(out[1] == 32);
+  assert(out[2] == 128);
+}
+
+}  // namespace
+}  // namespace uno
+
+int main() {
+  uno::test_map();
+}
