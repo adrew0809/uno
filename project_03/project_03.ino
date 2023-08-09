@@ -1,33 +1,31 @@
 #include "array.h"
 
-#include "Clock.h"
-#include "DigitalInput.h"
+#include "AnalogInput.h"
 #include "DigitalOutput.h"
-#include "State.h"
-#include "Transformer.h"
-#include "Writer.h"
+#include "SerialPort.h"
+#include "process.h"
+#include "write.h"
 
 int main() {
-  using uno::Clock;
-  using uno::DigitalInput;
+  using uno::AnalogInput;
   using uno::DigitalOutput;
-  using uno::State;
-  using uno::Transformer;
-  using uno::Writer;
+  using uno::SerialPort;
   using uno::array;
+  using uno::process;
+  using uno::write;
+
+  constexpr float kBaseline = 23.5;
 
   init();
 
-  const DigitalInput button(2);
-  const DigitalOutput greenLed(3);
-  const array<DigitalOutput, 2> redLeds = {DigitalOutput(4), DigitalOutput(5)};
-  Clock clock(2'000);
-  State state;
+  const AnalogInput temperature_sensor(A0, 1);
+  const array<DigitalOutput, 3> redLeds = {
+      DigitalOutput(2), DigitalOutput(3), DigitalOutput(4)};
+  const SerialPort serial_port(9600);
 
   while (true) {
-    const auto is_button_pressed = button.is_on();
-    const auto ticks = clock.tick();
-    state = visit(Transformer(is_button_pressed, ticks), state);
-    visit(Writer(greenLed, redLeds), state);
+    const auto reading = temperature_sensor.read();
+    const auto output = process(kBaseline, reading);
+    write(output, redLeds, serial_port);
   }
 }
