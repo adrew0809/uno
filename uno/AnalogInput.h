@@ -5,7 +5,10 @@ namespace uno {
 
 class AnalogInput {
 public:
-  AnalogInput(int pin, unsigned int cooldown_ms) noexcept;
+  constexpr AnalogInput(const int pin,
+                        const unsigned int cooldown_ms) noexcept :
+    pin_(pin), cooldown_ms_(cooldown_ms) {}
+
 
   float read() const noexcept;
 
