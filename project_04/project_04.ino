@@ -23,9 +23,9 @@ int main() {
 
   while (true) {
     const auto input = read(photoresisters);
-    log(serial_port, input);
+    log(serial_port, "Raw Sensor Values ", input);
     const auto output = map(input);
-    log(serial_port, output);
+    log(serial_port, "Mapped Sensor Values ", output);
     write(led, output);
   }
 }

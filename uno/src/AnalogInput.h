@@ -10,7 +10,7 @@ public:
     pin_(pin), cooldown_ms_(cooldown_ms) {}
 
 
-  float read() const noexcept;
+  int read() const noexcept;
 
 private:
   int pin_;

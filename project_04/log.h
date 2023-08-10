@@ -8,9 +8,7 @@ namespace uno {
 class SerialPort;
 
 void log(const SerialPort& serial_port,
-         const array<float, 3>& input) noexcept;
-
-void log(const SerialPort& serial_port,
+         const char* intro,
          const array<int, 3>& output) noexcept;
 
 }  // namespace uno

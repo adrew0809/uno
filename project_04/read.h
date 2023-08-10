@@ -6,7 +6,7 @@
 namespace uno {
 class AnalogInput;
 
-array<float, 3> read(const array<AnalogInput, 3>& photoresisters) noexcept;
+array<int, 3> read(const array<AnalogInput, 3>& photoresisters) noexcept;
 
 }  // namespace uno
 

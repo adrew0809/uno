@@ -8,7 +8,7 @@ namespace uno {
 namespace {
 
 void test_map() {
-  array<float, 3> in = { 64.0, 128.0, 512.0 };
+  array<int, 3> in = { 64, 128, 512 };
   const auto out = map(in);
   assert(out[0] == 16);
   assert(out[1] == 32);

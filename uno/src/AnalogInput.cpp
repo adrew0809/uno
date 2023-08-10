@@ -4,7 +4,7 @@
 
 namespace uno {
 
-float AnalogInput::read() const noexcept {
+int AnalogInput::read() const noexcept {
   delay(cooldown_ms_);
   return analogRead(pin_);
 }
