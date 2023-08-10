@@ -1,6 +1,6 @@
 #include "log.h"
 
-#include "SerialPort.h"
+#include <SerialPort.h>
 
 namespace uno {
 

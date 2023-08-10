@@ -1,7 +1,7 @@
 #ifndef UNO_PROJECT04_READ_H_
 #define UNO_PROJECT04_READ_H_
 
-#include "array.h"
+#include <array.h>
 
 namespace uno {
 class AnalogInput;

@@ -1,8 +1,7 @@
 #include "read.h"
 
-#include "algorithm.h"
-
-#include "AnalogInput.h"
+#include <AnalogInput.h>
+#include <algorithm.h>
 
 namespace uno {
 
