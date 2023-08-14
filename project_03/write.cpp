@@ -1,25 +1,22 @@
 #include "write.h"
 
-#include "DigitalOutput.h"
-#include "SerialPort.h"
+#include <uno/Board.h>
+#include <uno/DigitalWriter.h>
+
 #include "process.h"
 
 namespace uno {
 namespace {
 
 void log(const Output& output,
-         const SerialPort& serial_port) noexcept {
-  serial_port.print("Sensor Value: ");
-  serial_port.print(output.value);
-  serial_port.print(", Volts: ");
-  serial_port.print(output.voltage);
-  serial_port.print(", degrees C: ");
-  serial_port.print(output.celsius);
-  serial_port.print("\n");
+         const SerialStream& ss) noexcept {
+  ss << "Sensor Value: " << output.value;
+  ss << ", Volts: " << output.voltage;
+  ss << ", degrees C: " << output.celsius << '\n';
 }
 
 void light(Level level,
-           const array<DigitalOutput, 3>& leds) noexcept {
+           const array<DigitalWriter, 3>& leds) noexcept {
   switch (level) {
   case Level::kNone:
     for (const auto& led : leds) {
@@ -46,9 +43,9 @@ void light(Level level,
 }  // namespace
 
 void write(const Output& output,
-           const array<DigitalOutput, 3>& leds,
-           const SerialPort& serial_port) noexcept {
-  log(output, serial_port);
+           const array<DigitalWriter, 3>& leds,
+           const SerialStream& ss) noexcept {
+  log(output, ss);
   light(output.level, leds);
 }
 

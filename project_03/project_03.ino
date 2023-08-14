@@ -1,31 +1,29 @@
-#include "array.h"
+#include <uno.h> // hack to include nested headers
+#include <uno/AnalogReader.h>
+#include <uno/Board.h>
+#include <uno/DigitalWriter.h>
+#include <uno/array.h>
+#include <uno/util.h>
 
-#include "AnalogInput.h"
-#include "DigitalOutput.h"
-#include "SerialPort.h"
 #include "process.h"
 #include "write.h"
 
 int main() {
-  using uno::AnalogInput;
-  using uno::DigitalOutput;
-  using uno::SerialPort;
-  using uno::array;
-  using uno::process;
-  using uno::write;
+  using namespace uno::operators;
 
   constexpr float kBaseline = 23.5;
 
-  init();
+  const uno::Board board;
 
-  const AnalogInput temperature_sensor(A0, 1);
-  const array<DigitalOutput, 3> redLeds = {
-      DigitalOutput(2), DigitalOutput(3), DigitalOutput(4)};
-  const SerialPort serial_port(9600);
+  const uno::AnalogReader temperature_sensor(pin_A0(board));
+  const uno::array<uno::DigitalWriter, 3> redLeds = {
+      uno::DigitalWriter(pin_2(board)), uno::DigitalWriter(pin_3(board)), uno::DigitalWriter(pin_4(board))};
+  const auto ss = open_serial_stream(board, 9600_Bd);
 
-  while (true) {
+  for (;;) {
     const auto reading = temperature_sensor.read();
-    const auto output = process(kBaseline, reading);
-    write(output, redLeds, serial_port);
+    const auto output = uno::process(kBaseline, reading);
+    write(output, redLeds, ss);
+    wait_for(1_ms);
   }
 }
