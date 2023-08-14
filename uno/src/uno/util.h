@@ -24,7 +24,9 @@ public:
   constexpr explicit Clock(const unsigned long cycles_per_tick) :
       cycles_per_tick_(cycles_per_tick) {}
 
-  unsigned long tick() noexcept;
+  unsigned long tick() noexcept {
+    return ++cycles_ / cycles_per_tick_;
+  }
 
 private:
   unsigned long cycles_{0};

@@ -22,7 +22,7 @@ constexpr Baud operator""_Bd(unsigned long long n) noexcept {
 
 class Board {
 public:
-  Board() noexcept;
+  Board() noexcept { ::init(); }
 };
 
 class SerialStream {

@@ -1,12 +1,13 @@
 #include "Writer.h"
 
-#include "DigitalOutput.h"
+#include <uno/DigitalWriter.h>
+
 #include "State.h"
 
 namespace uno {
 
-Writer::Writer(const DigitalOutput& ready,
-               const array<DigitalOutput, 2>& blinkers) noexcept :
+Writer::Writer(const DigitalWriter& ready,
+               const array<DigitalWriter, 2>& blinkers) noexcept :
     ready_(&ready), blinkers_(&blinkers) {}
 
 void Writer::operator()(const Idle&) const noexcept {

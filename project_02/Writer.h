@@ -1,30 +1,28 @@
-#ifndef UNO_WRITER_H_
-#define UNO_WRITER_H_
+#ifndef UNO_PROJECT_02_WRITER_H_
+#define UNO_PROJECT_02_WRITER_H_
 
-#include <stddef.h>
-
-#include "array.h"
+#include <uno/array.h>
 
 namespace uno {
 
 class Blinking;
-class DigitalOutput;
+class DigitalWriter;
 class Idle;
 
 class Writer {
 public:
-  Writer(const DigitalOutput& ready,
-         const array<DigitalOutput, 2>& blinkers) noexcept;
+  Writer(const DigitalWriter& ready,
+         const array<DigitalWriter, 2>& blinkers) noexcept;
 
   void operator()(const Idle& idle) const noexcept;
 
   void operator()(const Blinking& blinking) const noexcept;
 
 private:
-  const DigitalOutput* ready_;
-  const array<DigitalOutput, 2>* blinkers_;
+  const DigitalWriter* ready_;
+  const array<DigitalWriter, 2>* blinkers_;
 };
 
 }  // namespace uno
 
-#endif  // UNO_WRITER_H_
+#endif  // UNO_PROJECT_02_WRITER_H_

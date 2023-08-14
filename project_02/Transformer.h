@@ -1,5 +1,5 @@
-#ifndef UNO_TRANSFORMER_H_
-#define UNO_TRANSFORMER_H_
+#ifndef UNO_PROJECT_02_TRANSFORMER_H_
+#define UNO_PROJECT_02_TRANSFORMER_H_
 
 #include "State.h"
 
@@ -20,4 +20,4 @@ private:
 
 }  // namespace uno
 
-#endif  // UNO_TRANSFORMER_H_
+#endif  // UNO_PROJECT_02_TRANSFORMER_H_
