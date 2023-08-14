@@ -24,3 +24,10 @@ Can embedded code be expressive, type-safe, modular, and testable?
                   +----------------------+-----------------------
     book solution | 2892                 | 274
     this solution | 2844                 | 276
+
+### Project 5
+
+                  | program size (bytes) | dynamic memory (bytes)
+                  +----------------------+-----------------------
+    book solution | 3394                 | 251
+    this solution | 2984                 | 240
