@@ -1,4 +1,5 @@
-#include <uno.h>
+#include <uno.h>        // hack to include the real headers
+#include <uno_server.h> //
 #include <uno/AnalogReader.h>
 #include <uno/Board.h>
 #include <uno/Servo.h>
