@@ -1,13 +1,13 @@
 #ifndef UNO_PROJECT04_LOG_H_
 #define UNO_PROJECT04_LOG_H_
 
-#include <array.h>
+#include <uno/array.h>
 
 namespace uno {
 
-class SerialPort;
+class SerialStream;
 
-void log(const SerialPort& serial_port,
+void log(const SerialStream& ss,
          const char* intro,
          const array<int, 3>& output) noexcept;
 

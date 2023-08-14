@@ -1,13 +1,13 @@
 #include "write.h"
 
-#include <AnalogOutput.h>
+#include <uno/AnalogWriter.h>
 
 namespace uno {
 
-void write(const array<AnalogOutput, 3>& led,
+void write(const array<AnalogWriter, 3>& leds,
            const array<int, 3>& output) noexcept {
   for (int i = 0; i < 3; ++i) {
-		led[i].write(output[i]); 
+		leds[i].write(output[i]); 
   }
 }
 

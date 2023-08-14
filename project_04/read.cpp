@@ -1,15 +1,21 @@
 #include "read.h"
 
-#include <AnalogInput.h>
-#include <algorithm.h>
+#include <uno/AnalogReader.h>
+#include <uno/algorithm.h>
+#include <uno/util.h>
 
 namespace uno {
 
-array<int, 3> read(const array<AnalogInput, 3>& photoresisters) noexcept {
+array<int, 3> read(const array<AnalogReader, 3>& photoresisters) noexcept {
+  using namespace uno::operators;
   array<int, 3> rgb;
-  transform(photoresisters.begin(), photoresisters.end(),
-            rgb.begin(),
-            [](const AnalogInput& in) { return in.read(); });
+  rgb[0] = photoresisters[0].read();
+  transform(photoresisters.begin() + 1, photoresisters.end(),
+            rgb.begin() + 1,
+            [](const AnalogReader& in) {
+              wait_for(5_ms);
+              return in.read();
+            });
   return rgb;
 }
 

@@ -1,7 +1,8 @@
 #include <cassert>
 #include <cmath>
 
-#include "array.h"
+#include <uno/array.h>
+
 #include "map.h"
 
 namespace uno {

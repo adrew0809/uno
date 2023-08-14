@@ -1,12 +1,12 @@
 #ifndef UNO_PROJECT04_WRITE_H_
 #define UNO_PROJECT04_WRITE_H_
 
-#include <array.h>
+#include <uno/array.h>
 
 namespace uno {
-class AnalogOutput;
+class AnalogWriter;
 
-void write(const array<AnalogOutput, 3>& led,
+void write(const array<AnalogWriter, 3>& leds,
            const array<int, 3>& output) noexcept;
 
 }  // namespace uno

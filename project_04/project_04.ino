@@ -1,7 +1,8 @@
-#include <AnalogInput.h>
-#include <AnalogOutput.h>
-#include <SerialPort.h>
-#include <array.h>
+#include <uno.h> // hack to find nedted headers
+#include <uno/array.h>
+#include <uno/AnalogReader.h>
+#include <uno/AnalogWriter.h>
+#include <uno/Board.h>
 
 #include "log.h"
 #include "map.h"
@@ -9,24 +10,25 @@
 #include "write.h"
 
 int main() {
-  using uno::AnalogInput;
-  using uno::AnalogOutput;
-  using uno::SerialPort;
-  using uno::array;
+  using namespace uno::operators;
 
-  init();
+  const uno::Board board;
 
-  const array<AnalogInput, 3> photoresisters =
-      {AnalogInput(A0, 0), AnalogInput(A1, 5), AnalogInput(A2, 5)};
-  const array<AnalogOutput, 3> led =
-      {AnalogOutput(9), AnalogOutput(10), AnalogOutput(11)};
-  const SerialPort serial_port(9600);
+  const uno::array<uno::AnalogReader, 3> photoresisters = {
+      uno::AnalogReader(pin_A0(board)),
+      uno::AnalogReader(pin_A1(board)),
+      uno::AnalogReader(pin_A2(board))};
+  const uno::array<uno::AnalogWriter, 3> leds = {
+      uno::AnalogWriter(pin_9(board)),
+      uno::AnalogWriter(pin_10(board)),
+      uno::AnalogWriter(pin_11(board))};
+  const auto ss = open_serial_stream(board, 9600_Bd);
 
-  while (true) {
+  for (;;) {
     const auto input = read(photoresisters);
-    log(serial_port, "Raw Sensor Values ", input);
+    log(ss, "Raw Sensor Values ", input);
     const auto output = map(input);
-    log(serial_port, "Mapped Sensor Values ", output);
-    write(led, output);
+    log(ss, "Mapped Sensor Values ", output);
+    write(leds, output);
   }
 }

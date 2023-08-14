@@ -1,6 +1,6 @@
 #include "log.h"
 
-#include <SerialPort.h>
+#include <uno/Board.h>
 
 namespace uno {
 
@@ -8,15 +8,15 @@ constexpr array<const char*, 3> kColors = {"\t red: ",
                                            "\t green: ",
                                            "\t blue: "};
 
-void log(const SerialPort& serial_port,
+void log(const SerialStream& ss,
            const char* const intro,
            const array<int, 3>& arr) noexcept {
-  serial_port.print(intro);
+  ss << intro;
   for (int i = 0; i < 3; ++i) {
-    serial_port.print(kColors[i]);
-    serial_port.print(arr[i]);
+    ss << kColors[i];
+    ss << arr[i];
   }
-  serial_port.print('\n');
+  ss << '\n';
 }
 
 }  // namespace uno

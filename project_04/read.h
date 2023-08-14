@@ -1,12 +1,12 @@
 #ifndef UNO_PROJECT04_READ_H_
 #define UNO_PROJECT04_READ_H_
 
-#include <array.h>
+#include <uno/array.h>
 
 namespace uno {
-class AnalogInput;
+class AnalogReader;
 
-array<int, 3> read(const array<AnalogInput, 3>& photoresisters) noexcept;
+array<int, 3> read(const array<AnalogReader, 3>& photoresisters) noexcept;
 
 }  // namespace uno
 
