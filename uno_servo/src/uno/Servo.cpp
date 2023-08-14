@@ -5,10 +5,10 @@
 
 namespace uno {
 
-Servo::Servo(PWMPin pin) noexcept {
+Servo::Servo(const PWMPin pin) noexcept {
   servo_.attach(pin.value);
 }
-void Servo::move_to(Degrees angle) const noexcept {
+void Servo::move_to(const Degrees angle) const noexcept {
   servo_.write(angle.value);
 }
 
