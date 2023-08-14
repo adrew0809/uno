@@ -19,6 +19,18 @@ constexpr Milliseconds operator""_ms(unsigned long long n) noexcept {
 
 }  // namespace operators
 
+class Clock {
+public:
+  constexpr explicit Clock(const unsigned long cycles_per_tick) :
+      cycles_per_tick_(cycles_per_tick) {}
+
+  unsigned long tick() noexcept;
+
+private:
+  unsigned long cycles_{0};
+  unsigned long cycles_per_tick_;
+};
+
 void wait_for(Milliseconds ms) noexcept;
 
 Degrees to_angle(const int value) noexcept;

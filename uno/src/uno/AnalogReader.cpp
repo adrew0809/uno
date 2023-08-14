@@ -5,7 +5,7 @@
 namespace uno {
 
 int AnalogReader::read() const noexcept {
-  return analogRead(pin_.value);
+  return analogRead(pin_);
 }
 
 }  // namespace uno

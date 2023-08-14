@@ -7,7 +7,8 @@
 namespace uno {
 
 struct AnalogPin { uint8_t value; };
-struct PWMPin { int value; };
+struct DigitalPin { uint8_t value; };
+struct PWMPin { uint8_t value; };
 
 struct Baud { unsigned long value; };
 
@@ -37,6 +38,10 @@ const SerialStream& operator<<(const SerialStream& ss, const T t) noexcept {
 }
 
 constexpr AnalogPin pin_A0(const Board&) noexcept { return {A0}; }
+constexpr DigitalPin pin_2(const Board&) noexcept { return {2}; }
+constexpr PWMPin pin_3(const Board&) noexcept { return {3}; }
+constexpr DigitalPin pin_4(const Board&) noexcept { return {4}; }
+constexpr PWMPin pin_5(const Board&) noexcept { return {5}; }
 constexpr PWMPin pin_9(const Board&) noexcept { return {9}; }
 SerialStream open_serial_stream(const Board& board, Baud b) noexcept;
 
