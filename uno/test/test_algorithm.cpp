@@ -1,6 +1,6 @@
 #include <cassert>
 
-#include "algorithm.h"
+#include <uno/algorithm.h>
 
 void test_transform() {
   const int in[3] = {1, 2, 3};

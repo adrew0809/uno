@@ -1,7 +1,7 @@
 #ifndef UNO_STATE_H_
 #define UNO_STATE_H_
 
-#include "utility.h"
+#include <uno/utility.h>
 
 namespace uno {
 

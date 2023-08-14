@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-#include "array.h"
+#include <uno/array.h>
 
 void test_const_element_access() {
   const uno::array<int, 3> ar = {1, 2, 3};
