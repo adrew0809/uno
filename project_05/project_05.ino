@@ -3,7 +3,8 @@
 #include <uno/AnalogReader.h>
 #include <uno/Board.h>
 #include <uno/Servo.h>
-#include <uno/util.h>
+#include <uno/math.h>
+#include <uno/time.h>
 
 int main() {
   using namespace uno::operators;

@@ -1,7 +1,7 @@
 #include <uno/Servo.h>
 
 #include <uno/Board.h>
-#include <uno/util.h>
+#include <uno/math.h>
 
 namespace uno {
 

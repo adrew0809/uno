@@ -1,4 +1,4 @@
-#include <uno/util.h>
+#include <uno/math.h>
 
 #include <Arduino.h>
 #include <uno/Board.h>
@@ -7,10 +7,6 @@ namespace uno {
 
 const SerialStream& operator<<(const SerialStream& ss, Degrees d) noexcept {
   return ss << d.value;
-}
-
-void wait_for(Milliseconds ms) noexcept {
-  delay(ms.value);
 }
 
 Degrees to_angle(const int value) noexcept {

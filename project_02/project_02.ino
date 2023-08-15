@@ -3,7 +3,7 @@
 #include <uno/DigitalReader.h>
 #include <uno/DigitalWriter.h>
 #include <uno/array.h>
-#include <uno/util.h>
+#include <uno/time.h>
 
 #include "State.h"
 #include "Transformer.h"
