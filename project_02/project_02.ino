@@ -17,7 +17,7 @@ int main() {
   const uno::array<uno::DigitalWriter, 2> redLeds = {
       uno::DigitalWriter(pin_4(board)),
       uno::DigitalWriter(pin_5(board))};
-  uno::Clock clock(2'000);
+  uno::Clock clock(250);
   uno::State state;
 
   for (;;) {

@@ -15,16 +15,12 @@ constexpr Milliseconds operator""_ms(unsigned long long n) noexcept {
 
 class Clock {
 public:
-  constexpr explicit Clock(const unsigned long cycles_per_tick) :
-      cycles_per_tick_(cycles_per_tick) {}
-
-  unsigned long tick() noexcept {
-    return ++cycles_ / cycles_per_tick_;
-  }
+  explicit Clock(const unsigned long interval) noexcept;
+  bool tick() noexcept;
 
 private:
-  unsigned long cycles_{0};
-  unsigned long cycles_per_tick_;
+  unsigned long interval_;
+  unsigned long next_timeout_;
 };
 
 void wait_for(Milliseconds ms) noexcept;

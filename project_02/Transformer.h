@@ -7,7 +7,7 @@ namespace uno {
 
 class Transformer {
 public:
-  Transformer(bool is_pressed, unsigned long ticks) noexcept;
+  Transformer(bool is_pressed, bool tick) noexcept;
 
   State operator()(const Idle& state) const noexcept;
 
@@ -15,7 +15,7 @@ public:
 
 private:
   bool is_pressed_;
-  unsigned long ticks_;
+  bool tick_;
 };
 
 }  // namespace uno

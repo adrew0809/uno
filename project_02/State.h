@@ -8,7 +8,6 @@ namespace uno {
 struct Idle {};
 struct Blinking {
   bool first_led_on;
-  unsigned long ticks;
 };
 
 class State {
